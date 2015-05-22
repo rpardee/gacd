@@ -76,12 +76,12 @@ unified <- rbind(test, train)
 
 rm(test, train, xlabs, ylabs, wanted_features)
 
-write.table(unified, 'submit/harus_tidy.txt', row.name=FALSE)
+write.table(unified, 'submit/harus_tidy.txt', row.names=FALSE)
 
 melted <- melt(unified, id=c('subject', 'activity'), measure.vars=pretty_feature_names)
 meany <- dcast(melted, subject + activity ~ variable, mean)
 
-write.table(meany, 'submit/harus_means_tidy.txt', row.name=FALSE)
+write.table(meany, 'submit/harus_means_tidy.txt', row.names=FALSE)
 
 rm(melted, meany)
 
