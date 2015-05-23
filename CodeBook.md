@@ -17,6 +17,8 @@ As delivered the data were split into Training (70% of observations) and Test (3
 
 ##harus_tidy.txt
 
+Variable|Description
+--------|-----------
 subject| Arbitrary ID for the person performing the measured activities.
 activity| The activity the person was doing when measured--one of WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, or LAYING
 fBodyAcc_mean_X| Frequency of the acceleration of the body on the X axis
