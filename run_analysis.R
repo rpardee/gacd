@@ -19,15 +19,14 @@
 #   5. From the data set in step 4, creates a second, independent tidy data
 #      set with the average of each variable for each activity and each subject.
 
-# source('C:/Users/pardre1/documents/vdw/gacd/run_analysis.R')
+# source('C:/Users/Roy/r_projects/gacd/run_analysis.R')
 
 # Start w/a clean environment.
 rm(list=ls())
 
 library('plyr')
 library('reshape2')
-
-proj_root <- 'C:/Users/pardre1/Documents/vdw/gacd/'
+proj_root <- 'C:/Users/roy/r_projects/gacd/'
 setwd(proj_root)
 
 ylabs <- read.table('data/activity_labels.txt')$V2
@@ -80,6 +79,8 @@ write.table(unified, 'submit/harus_tidy.txt', row.names=FALSE)
 
 melted <- melt(unified, id=c('subject', 'activity'), measure.vars=pretty_feature_names)
 meany <- dcast(melted, subject + activity ~ variable, mean)
+# Make the names of the subj/act mean features distinct, to avoid confusion w/the closer-to-raw measures in unified (harus_tidy.txt).
+names(meany) <- paste('m_', pretty_feature_names, sep='')
 
 write.table(meany, 'submit/harus_means_tidy.txt', row.names=FALSE)
 
